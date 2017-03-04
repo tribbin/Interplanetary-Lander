@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="-8 -8 16 16"
+   version="1.1"
+   id="svg8"
+   style="shape-rendering:crispEdges"
+   inkscape:version="0.92.0 r15299"
+   sodipodi:docname="spacecraft1_left.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.627417"
+     inkscape:cx="8.0953103"
+     inkscape:cy="5.6706516"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="true"
+     units="px"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     objecttolerance="10000"
+     inkscape:snap-to-guides="false"
+     inkscape:snap-global="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4485"
+       originx="0"
+       originy="0" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="spacecraft1"
+     style="display:inline">
+    <g
+       id="spacecraft1"
+       inkscape:label="spacecraft1"
+       transform="translate(-8,-8)"
+       style="display:none">
+      <path
+         inkscape:connector-curvature="0"
+         d="M 7,5 H 8 V 6 H 7 Z M 7,4 H 8 V 5 H 7 Z M 8,4 H 9 V 5 H 8 Z M 8,5 H 9 V 6 H 8 Z m 1,0 h 1 V 6 H 9 Z M 9,4 h 1 V 5 H 9 Z M 9,3 h 1 V 4 H 9 Z M 8,3 H 9 V 4 H 8 Z M 8,2 H 9 V 3 H 8 Z M 7,2 H 8 V 3 H 7 Z M 7,3 H 8 V 4 H 7 Z M 6,3 H 7 V 4 H 6 Z M 6,4 H 7 V 5 H 6 Z M 6,5 H 7 V 6 H 6 Z"
+         style="display:inline;opacity:1;fill:#aaccff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect5698-3-4" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 10,7 h 1 V 8 H 10 Z M 9,7 h 1 V 8 H 9 Z M 6,7 H 7 V 8 H 6 Z M 5,7 H 6 V 8 H 5 Z"
+         style="display:inline;opacity:1;fill:#2b0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect5698-3-2-4" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 14,6 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 1,0 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,-2 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m -2,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 V 8 H 13 Z M 12,6 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 V 5 H 12 Z M 3,6 H 4 V 7 H 3 Z M 3,5 H 4 V 6 H 3 Z M 3,4 H 4 V 5 H 3 Z M 2,2 H 3 V 3 H 2 Z M 2,3 H 3 V 4 H 2 Z M 2,4 H 3 V 5 H 2 Z M 2,5 H 3 V 6 H 2 Z M 2,6 H 3 V 7 H 2 Z M 2,7 H 3 V 8 H 2 Z M 1,6 H 2 V 7 H 1 Z M 1,5 H 2 V 6 H 1 Z M 0,6 H 1 V 7 H 0 Z M 0,5 H 1 V 6 H 0 Z M 0,4 H 1 V 5 H 0 Z M 0,3 H 1 V 4 H 0 Z M 0,2 H 1 V 3 H 0 Z M 0,1 H 1 V 2 H 0 Z"
+         style="display:inline;opacity:1;fill:#000080;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect6148-48" />
+      <g
+         id="g6487">
+        <path
+           id="rect5698-3-361"
+           style="display:inline;opacity:1;fill:#800000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+           d="M 4,7 H 5 V 8 H 4 Z M 4,6 H 5 V 7 H 4 Z M 4,5 H 5 V 6 H 4 Z M 4,4 H 5 V 5 H 4 Z M 4,3 H 5 V 4 H 4 Z M 5,3 H 6 V 4 H 5 Z M 5,2 H 6 V 3 H 5 Z M 6,2 H 7 V 3 H 6 Z M 6,1 H 7 V 2 H 6 Z M 7,1 H 8 V 2 H 7 Z M 7,0 H 8 V 1 H 7 Z M 8,0 H 9 V 1 H 8 Z M 8,1 H 9 V 2 H 8 Z m 1,0 h 1 V 2 H 9 Z m 0,1 h 1 V 3 H 9 Z m 1,0 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 1,0 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m -1,0 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 1,0 h 1 v 1 h -1 z m 0,2 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m -1,0 h 1 V 7 H 10 Z M 9,6 h 1 V 7 H 9 Z M 8,6 H 9 V 7 H 8 Z M 7,6 H 8 V 7 H 7 Z M 6,6 H 7 V 7 H 6 Z M 5,6 H 6 V 7 H 5 Z M 5,5 H 6 V 6 H 5 Z M 5,4 H 6 V 5 H 5 Z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="rect6148-96"
+           style="display:inline;opacity:1;fill:#550000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+           d="M 4,7 H 5 V 8 H 4 Z M 4,6 H 5 V 7 H 4 Z M 4,5 H 5 V 6 H 4 Z M 4,4 H 5 V 5 H 4 Z M 4,3 H 5 V 4 H 4 Z m 7,4 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         d="M 8,2 H 9 V 3 H 8 Z M 7,2 H 8 V 3 H 7 Z M 6,3 H 7 V 4 H 6 Z M 6,4 H 7 V 5 H 6 Z M 6,5 H 7 V 6 H 6 Z m 3,0 h 1 V 6 H 9 Z M 9,4 h 1 V 5 H 9 Z M 9,3 h 1 V 4 H 9 Z"
+         style="display:inline;opacity:1;fill:#6f97d0;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect6148-9" />
+      <path
+         inkscape:connector-curvature="0"
+         d="M 3,6 H 4 V 7 H 3 Z M 3,5 H 4 V 6 H 3 Z M 3,4 H 4 V 5 H 3 Z m 9,2 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 2,2 h 1 v 1 h -1 z m 0,-1 h 1 V 6 H 14 Z M 1,6 H 2 V 7 H 1 Z M 1,5 H 2 V 6 H 1 Z"
+         style="display:inline;opacity:1;fill:#0c0c3b;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect6148-6" />
+    </g>
+    <g
+       inkscape:label="left"
+       id="left"
+       style="display:inline"
+       transform="translate(-8,-8)">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 9,13 h 1 v 1 H 9 Z m 0,-1 h 1 v 1 H 9 Z m 0,-1 h 1 v 1 H 9 Z m 1,0 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m -1,0 h 1 v 1 H 9 Z M 9,9 h 1 v 1 H 9 Z m 1,0 h 1 v 1 h -1 z m 0,-1 h 1 V 9 H 10 Z M 9,8 h 1 V 9 H 9 Z"
+         style="display:inline;opacity:1;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect7451-8" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 11,9 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m -1,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m -1,1 h 1 v 1 H 9 Z M 8,13 h 1 v 1 H 8 Z m 0,-1 h 1 v 1 H 8 Z m 0,-1 h 1 v 1 H 8 Z m 0,-1 h 1 v 1 H 8 Z M 8,9 h 1 v 1 H 8 Z"
+         style="display:inline;opacity:1;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect7451-3" />
+    </g>
+    <g
+       inkscape:label="right"
+       id="right"
+       style="display:none"
+       transform="translate(-8,-8)">
+      <path
+         inkscape:connector-curvature="0"
+         d="M 7,13 H 6 v 1 H 7 Z M 7,12 H 6 v 1 H 7 Z M 7,11 H 6 v 1 H 7 Z M 6,11 H 5 v 1 H 6 Z M 6,10 H 5 v 1 h 1 z m 1,0 H 6 v 1 H 7 Z M 7,9 H 6 v 1 H 7 Z M 6,9 H 5 v 1 H 6 Z M 6,8 H 5 V 9 H 6 Z M 7,8 H 6 v 1 h 1 z"
+         style="display:inline;opacity:1;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect7451-8-1" />
+      <path
+         inkscape:connector-curvature="0"
+         d="M 5,9 H 4 v 1 h 1 z m 0,1 H 4 v 1 h 1 z m 0,1 H 4 v 1 h 1 z m 1,1 H 5 v 1 h 1 z m 0,1 H 5 v 1 h 1 z m 1,1 H 6 v 1 H 7 Z M 8,13 H 7 v 1 H 8 Z M 8,12 H 7 v 1 H 8 Z M 8,11 H 7 v 1 H 8 Z M 8,10 H 7 v 1 H 8 Z M 8,9 H 7 v 1 h 1 z"
+         style="display:inline;opacity:1;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect7451-3-5" />
+    </g>
+    <g
+       id="forward"
+       inkscape:label="forward"
+       transform="translate(-20,-12)"
+       style="display:none">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 22,12 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m -1,2 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m -1,1 h 1 v 1 h -1 z m -1,0 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m -1,3 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m -1,0 h 1 v 1 h -1 z m 1,-1 h 1 v 1 h -1 z m -1,0 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 1,0 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m -1,0 h 1 v 1 h -1 z m 3,2 h 1 v 1 h -1 z"
+         style="opacity:1;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect6780-88" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 16,13 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 1,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 1,1 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 3,0 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m -2,-2 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 1,0 h 1 v 1 h -1 z m 0,1 h 1 v 1 h -1 z m 2,1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 1,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z m 0,-1 h 1 v 1 h -1 z"
+         style="opacity:1;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.77952766;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
+         id="rect6780-380" />
+    </g>
+  </g>
+</svg>

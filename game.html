@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lander</title>
+		<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+		<style>
+			body {
+				background: black;
+				margin: 0px;
+				font-family: 'VT323', monospace;
+				overflow: hidden;
+			}
+			img {
+				width: 90%;
+			}
+			svg#space {
+				background: black;
+				width: 100%;
+				height: 100%;
+			}
+			@keyframes start {
+				0%   {opacity: initial;}
+				100% {opacity: 1;}
+			}
+			@keyframes stop {
+				0%   {opacity: initial;}
+				100% {opacity: 0;}
+			}
+		</style>
+	</head>
+	<body>
+		<script src="lander.js" type="text/javascript"></script>
+		<script id="level" type="text/javascript"></script>
+		<svg id='lander' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		</svg>
+		<script>
+			var level = new Level("mars1");
+			var vehicle = new Vehicle("spacecraft1");
+			var game;
+			document.getElementById('level').setAttribute('src','objects/levels/'+level.name+'/level.js');
+			window.onload = function() {
+				game = new Game();
+				nextFrame();
+			}
+		</script>
+	</body>
+</html>
