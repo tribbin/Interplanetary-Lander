@@ -178,7 +178,6 @@ function nextFrame() {
 		game.x+=game.vector.x;
 		game.y+=game.vector.y;
 	}
-
 	if ( game.y < -400 || game.velocity > 3 || !(game.x > -200 && game.x < 40 ) || Math.cos(game.rotation) < 0.9 ) {
 		if (!game.finished && !game.dead) {
 			alarm.style.fill = "rgb(255,0,0)";
@@ -202,7 +201,9 @@ function nextFrame() {
 			game.spacebar.style.visibility = 'initial';
 		}
 	} else {
-		game.alarm.style.fill = "rgb(0,255,0)";
+		if(!game.finished) {
+			game.alarm.style.fill = "rgb(0,255,0)";
+		}
 		if(!game.landing) {
 			game.landing = true;
 			sfx.gear();
@@ -210,6 +211,7 @@ function nextFrame() {
 		}
 		if (game.y > -130 && !game.finished) {
 			game.finished = true;
+			game.alarm.style.fill = "rgb(255,255,0)";
 			sfx.success();
 			game.whole.setAttribute('transform',
 				'translate('+game.x+','+game.y+') ' 
