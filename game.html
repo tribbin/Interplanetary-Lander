@@ -29,11 +29,23 @@
 		</style>
 	</head>
 	<body>
+		<script src="sound/jsfx.js"></script>
 		<script src="lander.js" type="text/javascript"></script>
 		<script id="level" type="text/javascript"></script>
 		<svg id='lander' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 		</svg>
 		<script>
+			var library = {
+				"dead": {"Frequency":{"Start":1488.99766829421,"Slide":-0.2932289370536936,"ChangeSpeed":0.7257161016771136,"ChangeAmount":-2.882057185937825},"Generator":{"Func":"noise"},"Phaser":{"Offset":-0.27784700326641887,"Sweep":-0.18677355662854014},"Volume":{"Sustain":0.2964698962520791,"Decay":0.37203178493594957,"Punch":0.7523633371742906}},
+				"begin":{"Frequency":{"Start":1166.1156855968168,"Min":1769.9259801286703,"Max":327.5366146651167,"Slide":0.986752944772729,"DeltaSlide":-0.04640570898616048,"RepeatSpeed":0.16028071161172375,"ChangeAmount":-8.364595227528728,"ChangeSpeed":0.2937200304900329},"Vibrato":{"Depth":0.7290521384052664,"DepthSlide":-0.4124617377053932,"Frequency":22.485786753021586,"FrequencySlide":-0.7727916036423843},"Generator":{"Func":"synth","A":0.46327226050810566,"B":0.48985072969946963,"ASlide":0.8053570049547307,"BSlide":-0.8071230791453083},"Guitar":{"A":0.1795345562037669,"B":0.2711053726690702,"C":0.9872052217294911},"Phaser":{"Offset":-0.4443060919590538,"Sweep":-0.38380495592976827},"Volume":{"Master":0.1,"Attack":0.9819679074218186,"Sustain":1.0097444588314386,"Punch":0.8170783797432437,"Decay":1.6680710400399315}},
+
+"burst":{"Frequency":{"Start":549,"Slide":0.16,"RepeatSpeed":1.49,"Min":30,"Max":1800,"DeltaSlide":-0.25,"ChangeSpeed":0.6,"ChangeAmount":1},"Generator":{"Func":"noise","A":0,"B":0,"ASlide":0.02},"Phaser":{"Offset":-0.48,"Sweep":-0.37},"Volume":{"Sustain":0.13,"Decay":0.491,"Punch":0.9,"Master":0.4,"Attack":0.041},"Filter":{"LP":0.2,"LPSlide":0.77,"LPResonance":0,"HP":0.15,"HPSlide":-0.55},"Vibrato":{"Depth":0.66,"Frequency":3.01,"DepthSlide":-0.43,"FrequencySlide":-0.17}},
+
+"success":{"Frequency":{"Start":587,"ChangeSpeed":0.18,"ChangeAmount":12,"RepeatSpeed":0,"DeltaSlide":-0.02,"Slide":-0.02,"Max":1800,"Min":30},"Volume":{"Master": 0.9,"Sustain":0.021633866119553338,"Decay":0.28110818534234283,"Punch":0.49664398772478857},"Generator":{"Func":"square"},"Vibrato":{"Depth":0,"Frequency":1.01,"FrequencySlide":-0.05,"DepthSlide":-0.05}}
+			};
+			var sfx = jsfx.Sounds(library);		
+		
+		
 			var level = new Level("mars1");
 			var vehicle = new Vehicle("spacecraft1");
 			var game;

@@ -120,6 +120,7 @@ class Game {
 		this.svg.insertBefore(this.whole,this.front);
 
 		this.svg.appendChild(this.spacebar);
+		sfx.begin();
 	}
 	restart() {
 			// Game-logic
@@ -144,6 +145,7 @@ class Game {
 		this.fuel.style.visibility = "initial";
 		level.burst = 160;
 		game.spacebar.style.visibility = 'hidden';
+		sfx.begin();
 	}
 }
 // Drawing
@@ -162,6 +164,7 @@ function nextFrame() {
 		}
 		if (game.y > -60 && !(game.x > -120 && game.x < 120 ) && !game.finished) {
 			game.dead = true;
+			sfx.dead();
 			game.finished = true;
 			game.whole.style.visibility = "hidden";
 			game.meter.style.visibility = "hidden";
@@ -170,6 +173,7 @@ function nextFrame() {
 		}
 		if (game.y > -130 && (game.x > -120 && game.x < 120 ) && !game.finished) {
 			game.dead = true;
+			sfx.dead();
 			game.finished = true;
 			game.whole.style.visibility = "hidden";
 			game.meter.style.visibility = "hidden";
@@ -181,6 +185,7 @@ function nextFrame() {
 		game.legs.setAttribute('opacity',1);
 		if (game.y > -130 && !game.finished) {
 			game.finished = true;
+			sfx.success();
 			game.whole.setAttribute('transform',
 				'translate('+game.x+','+game.y+') ' 
 				+ 'rotate(0,'+game.zoom/2+','+game.zoom/4+')');
@@ -258,6 +263,7 @@ function keyboard(event) {
 // Different control-options can call these functions.
 function steer(direction) {
 	level.burst -= 1;
+	sfx.burst();
 	if (direction == 'left') {
 		game.rotationD-=0.5*(Math.PI/180);
 		game.vector.x += Math.sin(game.rotation)/2;
