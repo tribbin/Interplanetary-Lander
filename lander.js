@@ -36,8 +36,40 @@ class Game {
 		this.front = document.getElementById('front');
 		this.alarm = document.getElementById('alarm');
 		this.whole = document.createElementNS('http://www.w3.org/2000/svg','g');
-		this.spacecraft = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.spacebar = document.createElementNS('http://www.w3.org/2000/svg','text');
+
+		this.radarHorizon = document.createElementNS('http://www.w3.org/2000/svg','image');
+		this.radarAltitude = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+		this.radarDistance = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+		this.radarText = document.createElementNS('http://www.w3.org/2000/svg','text');
+		this.radarPanel = document.createElementNS('http://www.w3.org/2000/svg','image');
+		this.radar = document.createElementNS('http://www.w3.org/2000/svg','g');
+		this.radarText.appendChild(this.radarAltitude);
+		this.radarText.appendChild(this.radarDistance);
+		this.radar.appendChild(this.radarHorizon);
+		this.radar.appendChild(this.radarPanel);
+		this.radar.appendChild(this.radarText);
+
+		this.radarHorizon.setAttribute('href','img/radar_horizon.svg');
+		this.radarHorizon.setAttribute('width',640);
+		this.radarPanel.setAttribute('href','img/radar_panel.svg');
+		this.radarPanel.setAttribute('width',640);
+				
+		this.radarHorizon.setAttribute('y',-320);
+		this.radarHorizon.setAttribute('x',-320);
+		this.radarPanel.setAttribute('y',-320);
+		this.radarPanel.setAttribute('x',-320);
+
+		this.radarText.setAttribute('x',-320);
+		this.radarText.setAttribute('y',450);
+		this.radarText.style.fill = 'white';
+		this.radarText.style.fontSize = 120;
+
+		this.radarDistance.setAttribute('x',0);
+		this.radarDistance.setAttribute('dy','1.2em');
+
+		this.radar.setAttribute('transform','translate(0,-1800)');
+
 		this.spacebar.setAttribute('y','-400');
 		this.spacebar.innerHTML = "Press spacebar... SPACE-bar.";
 		this.spacebar.style.visibility = 'hidden';
@@ -46,6 +78,7 @@ class Game {
 		this.spacebar.style.textAnchor = 'middle';
 
 		// Vehicle-logic
+		this.spacecraft = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.forward = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.left = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.right = document.createElementNS('http://www.w3.org/2000/svg','image');
@@ -105,6 +138,7 @@ class Game {
 		this.svg.insertBefore(this.whole,this.front);
 
 		this.svg.appendChild(this.spacebar);
+		this.svg.appendChild(this.radar);
 		sfx.begin();
 	}
 	restart() {
@@ -204,6 +238,15 @@ function nextFrame() {
 			'translate('+game.x+','+game.y+')');
 		game.fuel.setAttribute('transform',
 			'translate('+game.x+','+game.y+')');
+		if (game.x<-3200||game.x>3200||game.y>200||game.y<-3400) {
+			game.radarAltitude.innerHTML = "Alt:  "+Math.round(-(game.y+60));
+			game.radarDistance.innerHTML = "Dist: "+Math.round(game.x);
+			game.radar.style.display = 'initial';
+			game.radarHorizon.setAttribute('transform',
+			'rotate('+game.rotation*(180/Math.PI)+')');
+		} else {
+			game.radar.style.display = 'none';
+		}
 	}
 	game.fuel.setAttribute('width',level.burst);
 	requestAnimationFrame(nextFrame);
