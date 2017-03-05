@@ -248,7 +248,7 @@ function nextFrame() {
 			game.radar.style.display = 'none';
 		}
 	}
-	game.fuel.setAttribute('width',level.burst);
+	game.fuel.setAttribute('width',level.burst*(2/3));
 	requestAnimationFrame(nextFrame);
 }
 function keyboard(event) {
