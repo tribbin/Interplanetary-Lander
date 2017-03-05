@@ -142,18 +142,19 @@ class Game {
 		sfx.begin();
 	}
 	restart() {
-			// Game-logic
-		this.buttonPressed = false;	// The player can press only one button at a time.
-		this.finished = false;		// Is the game finished?
-		this.landing = false;		// Is the game finished?
-		this.dead = false;		// Is the player dead?
-
-		// Drawing-logic
-		this.zoom = 160;						// Relative pixel-size. This should become obsolete soon.
 
 		// Motion-logic
 		this.x = 800;
 		this.y = -2400;
+
+		// Game-logic
+		this.buttonPressed = false;	// The player can press only one button at a time.
+		this.landing = false;		// Is the game finished?
+		this.dead = false;		// Is the player dead?
+		this.finished = false;		// Is the game finished?
+
+		// Drawing-logic
+		this.zoom = 160;						// Relative pixel-size. This should become obsolete soon.
 		this.rotation = Math.random()*Math.PI;
 		this.rotationD = Math.sin(Math.random()-0.5)*Math.PI/10;
 		this.vector = Object();
@@ -171,58 +172,56 @@ class Game {
 }
 // Drawing
 function nextFrame() {
-	game.velocity=Math.sqrt(Math.pow(game.vector.x,2)+Math.pow(game.vector.y,2));
-	game.rotation+=game.rotationD;
 	if(!game.finished) {
+		game.velocity=Math.sqrt(Math.pow(game.vector.x,2)+Math.pow(game.vector.y,2));
+		game.rotation+=game.rotationD;
 		game.vector.y+=level.gravity;
 		game.x+=game.vector.x;
 		game.y+=game.vector.y;
-	}
-	if ( game.y < -400 || game.velocity > 3 || !(game.x > -200 && game.x < 40 ) || Math.cos(game.rotation) < 0.9 ) {
-		if (!game.finished && !game.dead) {
-			alarm.style.fill = "rgb(255,0,0)";
-		}
-		if (game.y > -60 && !(game.x > -120 && game.x < 120 ) && !game.finished) {
-			game.dead = true;
-			sfx.dead();
-			game.finished = true;
-			game.whole.style.visibility = "hidden";
-			game.meter.style.visibility = "hidden";
-			game.fuel.style.visibility = "hidden";
-			game.spacebar.style.visibility = 'initial';
-		}
-		if (game.y > -130 && (game.x > -120 && game.x < 120 ) && !game.finished) {
-			game.dead = true;
-			sfx.dead();
-			game.finished = true;
-			game.whole.style.visibility = "hidden";
-			game.meter.style.visibility = "hidden";
-			game.fuel.style.visibility = "hidden";
-			game.spacebar.style.visibility = 'initial';
-		}
-	} else {
-		if(!game.finished) {
+		if ( game.y < -400 || game.velocity > 3 || !(game.x > -200 && game.x < 40 ) || Math.cos(game.rotation) < 0.9 ) {
+			if (!game.finished && !game.dead) {
+				alarm.style.fill = "rgb(255,0,0)";
+			}
+			if (game.y > -60 && !(game.x > -120 && game.x < 120 ) && !game.finished) {
+				game.dead = true;
+				sfx.dead();
+				game.finished = true;
+				game.whole.style.visibility = "hidden";
+				game.meter.style.visibility = "hidden";
+				game.fuel.style.visibility = "hidden";
+				game.spacebar.style.visibility = 'initial';
+			}
+			if (game.y > -130 && (game.x > -120 && game.x < 120 ) && !game.finished) {
+				game.dead = true;
+				sfx.dead();
+				game.finished = true;
+				game.whole.style.visibility = "hidden";
+				game.meter.style.visibility = "hidden";
+				game.fuel.style.visibility = "hidden";
+				game.spacebar.style.visibility = 'initial';
+			}
+		} else {
 			game.alarm.style.fill = "rgb(0,255,0)";
-		}
-		if(!game.landing) {
-			game.landing = true;
-			sfx.gear();
-			game.legs.setAttribute('opacity',1);
-		}
-		if (game.y > -130 && !game.finished) {
-			game.finished = true;
-			game.alarm.style.fill = "rgb(255,255,0)";
-			sfx.success();
-			game.whole.setAttribute('transform',
-				'translate('+game.x+','+game.y+') ' 
-				+ 'rotate(0,'+game.zoom/2+','+game.zoom/4+')');
-			game.spacebar.style.visibility = 'initial';
-		}
-	}
 
-	var scale = 1;
-	if (game.finished && !game.dead) {
-	} else {
+			if(!game.landing) {
+				game.landing = true;
+				sfx.gear();
+				game.legs.setAttribute('opacity',1);
+			}
+			if (game.y > -130) {
+				game.finished = true;
+				game.alarm.style.fill = "rgb(255,255,0)";
+				sfx.success();
+				game.rotation=0;
+				//game.y=-130;
+				game.whole.setAttribute('transform',
+					'translate('+game.x+','+-130.1+') ' 
+					+ 'rotate(0,'+game.zoom/2+','+game.zoom/4+')');
+				game.spacebar.style.visibility = 'initial';
+			}
+		}
+
+		var scale = 1;
 		scale = scale > game.x/500? scale : 2;
 		scale = scale > -(game.x/500)? scale : 2;
 		scale = scale > game.y/100? scale : 2;
@@ -231,13 +230,12 @@ function nextFrame() {
 		scale = scale > -(game.x/700)? scale : 4;
 		scale = scale > game.y/200? scale : 4;
 		scale = scale > -(game.y/800)? scale : 4;
-	}
-	game.svg.setAttribute('viewBox',
-		scale*-800 + " " +
-		scale*-850 + " " +
-		scale*1600 + " " +
-		scale*900 );
-	if(!game.finished) {
+		game.svg.setAttribute('viewBox',
+			scale*-800 + " " +
+			scale*-850 + " " +
+			scale*1600 + " " +
+			scale*900 );
+
 		game.whole.setAttribute('transform',
 			'translate('+game.x+','+game.y+') ' 
 			+ 'rotate('+game.rotation*(180/Math.PI)+','+game.zoom/2+','+game.zoom/4+')');
@@ -254,8 +252,9 @@ function nextFrame() {
 		} else {
 			game.radar.style.display = 'none';
 		}
+
+		game.fuel.setAttribute('width',level.burst*(2/3));
 	}
-	game.fuel.setAttribute('width',level.burst*(2/3));
 	requestAnimationFrame(nextFrame);
 }
 function keyboard(event) {
