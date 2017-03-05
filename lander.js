@@ -65,7 +65,7 @@ class Game {
 		this.radarText.style.fill = 'white';
 		this.radarText.style.fontSize = 120;
 
-		this.radarDistance.setAttribute('x',0);
+		this.radarDistance.setAttribute('x',-320);
 		this.radarDistance.setAttribute('dy','1.2em');
 
 		this.radar.setAttribute('transform','translate(0,-1800)');
@@ -153,17 +153,17 @@ class Game {
 		// Motion-logic
 		this.x = 800;
 		this.y = -2400;
-		this.rotation = Math.random();
-		this.rotationD = Math.sin(Math.random()-0.5)*Math.PI/30;
+		this.rotation = Math.random()*Math.PI;
+		this.rotationD = Math.sin(Math.random()-0.5)*Math.PI/10;
 		this.vector = Object();
 		this.vector.x = Math.sin(Math.random()-0.5)*25;
-		this.vector.y = Math.sin(Math.random()-0.7)*25;
+		this.vector.y = Math.sin(Math.random()-0.8)*25;
 		this.velocity = 0;
 		this.whole.style.visibility = "initial";
 		this.meter.style.visibility = "initial";
 		this.fuel.style.visibility = "initial";
 		this.legs.setAttribute('opacity',0);
-		level.burst = 160;
+		level.burst = 240;
 		this.spacebar.style.visibility = 'hidden';
 		sfx.begin();
 	}
