@@ -1,3 +1,4 @@
+level.landingspace = 200;
 level.gravity = 0.05; // The gravity on the planet.
 level.burst = 160; // The amount of fuel-burst that are available.
 level.viewbox = '-3200 -3400 6400 3600';

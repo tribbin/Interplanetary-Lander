@@ -31,12 +31,20 @@ class Game {
 
 	constructor() {
 
+		this.difficulty = 0;
+		this.losses = 0;
+		this.wins = 0;
+
+		// Adjust the landingspace size to fit the whole vehicle
+		level.landingspace -= vehicle.width*5;
+
 		// Level-logic
 		this.svg = document.getElementById('lander');
 		this.front = document.getElementById('front');
 		this.alarm = document.getElementById('alarm');
 		this.whole = document.createElementNS('http://www.w3.org/2000/svg','g');
 		this.spacebar = document.createElementNS('http://www.w3.org/2000/svg','text');
+		this.difficultyText = document.createElementNS('http://www.w3.org/2000/svg','text');
 
 		this.radarHorizon = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.radarAltitude = document.createElementNS('http://www.w3.org/2000/svg','tspan');
@@ -77,6 +85,12 @@ class Game {
 		this.spacebar.style.fontSize = '120';
 		this.spacebar.style.textAnchor = 'middle';
 
+		this.difficultyText.setAttribute('y','-700');
+//		this.difficultyText.style.visibility = 'hidden';
+		this.difficultyText.style.fill = 'white';
+		this.difficultyText.style.fontSize = '120';
+		this.difficultyText.style.textAnchor = 'middle';
+
 		// Vehicle-logic
 		this.spacecraft = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.forward = document.createElementNS('http://www.w3.org/2000/svg','image');
@@ -90,42 +104,47 @@ class Game {
 
 		this.spacecraft.setAttribute('href',vehicle.img.vehicle);
 		this.spacecraft.id = 'spacecraft';
+		this.spacecraft.setAttribute('x',-vehicle.width*5);
 		this.spacecraft.setAttribute('width',this.zoom);
 		this.spacecraft.setAttribute('height',this.zoom);
 
 		this.forward.setAttribute('href',vehicle.img.forward);
 		this.forward.id = 'forward';
+		this.forward.setAttribute('x',-vehicle.width*5);
 		this.forward.setAttribute('width',this.zoom);
 		this.forward.setAttribute('height',this.zoom);
 		this.forward.setAttribute('opacity',0);
 
 		this.left.setAttribute('href',vehicle.img.left);
 		this.left.id = 'left';
+		this.left.setAttribute('x',-vehicle.width*5);
 		this.left.setAttribute('width',this.zoom);
 		this.left.setAttribute('height',this.zoom);
 		this.left.setAttribute('opacity',0);
 
 		this.right.setAttribute('href',vehicle.img.right);
 		this.right.id = 'right';
+		this.right.setAttribute('x',-vehicle.width*5);
 		this.right.setAttribute('width',this.zoom);
 		this.right.setAttribute('height',this.zoom);
 		this.right.setAttribute('opacity',0);
 
 		this.legs.setAttribute('href',vehicle.img.landing);
+		this.legs.setAttribute('x',-vehicle.width*5);
 		this.legs.setAttribute('width',this.zoom);
 		this.legs.setAttribute('height',this.zoom);
 		this.legs.setAttribute('opacity',0);
 
 		this.meter.setAttribute('y',-60);
+		this.meter.setAttribute('x',-vehicle.width*5);
 		this.meter.setAttribute('width',vehicle.width*10);
 		this.meter.setAttribute('height',10);
 		this.meter.setAttribute('fill',"rgba(0,0,0,0.5)");
 
+		this.fuel.setAttribute('x',-vehicle.width*5);
 		this.fuel.setAttribute('y',-60);
 		this.fuel.setAttribute('height',10);
 		this.fuel.setAttribute('fill',"rgb(127,192,255)");
-
-		this.whole.setAttribute('transform','translate('+vehicle.translate.x+','+vehicle.translate.y+')');
 
 		this.whole.appendChild(this.spacecraft);
 		this.whole.appendChild(this.left);
@@ -138,14 +157,15 @@ class Game {
 		this.svg.insertBefore(this.whole,this.front);
 
 		this.svg.appendChild(this.spacebar);
+		this.svg.appendChild(this.difficultyText);
 		this.svg.appendChild(this.radar);
 		sfx.begin();
 	}
 	restart() {
 
 		// Motion-logic
-		this.x = 800;
-		this.y = -2400;
+		this.x = this.difficulty*Math.random()*200;
+		this.y = -(800+this.difficulty*400);
 
 		// Game-logic
 		this.buttonPressed = false;	// The player can press only one button at a time.
@@ -155,18 +175,19 @@ class Game {
 
 		// Drawing-logic
 		this.zoom = 160;						// Relative pixel-size. This should become obsolete soon.
-		this.rotation = Math.random()*Math.PI;
-		this.rotationD = Math.sin(Math.random()-0.5)*Math.PI/10;
+		this.rotation = this.difficulty*Math.random()*Math.PI/10;
+		this.rotationD =this.difficulty*(Math.sin(Math.random()-0.5)/20);
 		this.vector = Object();
-		this.vector.x = Math.sin(Math.random()-0.5)*25;
-		this.vector.y = Math.sin(Math.random()-0.8)*25;
+		this.vector.x = this.difficulty*Math.sin(Math.random()-0.5)*5;
+		this.vector.y = this.difficulty*Math.sin(Math.random()-0.8)*5;
 		this.velocity = 0;
 		this.whole.style.visibility = "initial";
 		this.meter.style.visibility = "initial";
 		this.fuel.style.visibility = "initial";
 		this.legs.setAttribute('opacity',0);
-		level.burst = 240;
+		level.burst = (this.difficulty+1)*50;
 		this.spacebar.style.visibility = 'hidden';
+		this.difficultyText.style.visibility = 'hidden';
 		sfx.begin();
 	}
 }
@@ -178,21 +199,22 @@ function nextFrame() {
 		game.vector.y+=level.gravity;
 		game.x+=game.vector.x;
 		game.y+=game.vector.y;
-		if ( game.y < -400 || game.velocity > 3 || !(game.x > -200 && game.x < 40 ) || Math.cos(game.rotation) < 0.9 ) {
+		if ( game.y < -400 || game.velocity > 3 || !(game.x > -level.landingspace && game.x < level.landingspace ) || Math.cos(game.rotation) < 0.9 ) {
 			if (!game.finished && !game.dead) {
 				alarm.style.fill = "rgb(255,0,0)";
 			}
-			if (game.y > -60 && !(game.x > -120 && game.x < 120 ) && !game.finished) {
+			if (game.y > -60 && !(game.x > -level.landingspace && game.x < level.landingspace ) && !game.finished) {
 				game.dead = true;
+				game.losses++;
 				sfx.dead();
 				game.finished = true;
 				game.whole.style.visibility = "hidden";
 				game.meter.style.visibility = "hidden";
 				game.fuel.style.visibility = "hidden";
 				game.spacebar.style.visibility = 'initial';
-			}
-			if (game.y > -130 && (game.x > -120 && game.x < 120 ) && !game.finished) {
+			} else if (game.y > -130 && (game.x > -level.landingspace && game.x < level.landingspace ) && !game.finished) {
 				game.dead = true;
+				game.losses++;
 				sfx.dead();
 				game.finished = true;
 				game.whole.style.visibility = "hidden";
@@ -210,6 +232,10 @@ function nextFrame() {
 			}
 			if (game.y > -130) {
 				game.finished = true;
+				game.wins++;
+				game.difficultyText.style.visibility = 'initial';
+				game.difficultyText.innerHTML = "Completed Difficulty: "+(10*game.difficulty).toFixed(0);;
+				game.difficulty += 0.1;
 				game.alarm.style.fill = "rgb(255,255,0)";
 				sfx.success();
 				game.rotation=0;
@@ -238,7 +264,7 @@ function nextFrame() {
 
 		game.whole.setAttribute('transform',
 			'translate('+game.x+','+game.y+') ' 
-			+ 'rotate('+game.rotation*(180/Math.PI)+','+game.zoom/2+','+game.zoom/4+')');
+			+ 'rotate('+game.rotation*(180/Math.PI)+','+0+','+vehicle.height*2.5+')');
 		game.meter.setAttribute('transform',
 			'translate('+game.x+','+game.y+')');
 		game.fuel.setAttribute('transform',
