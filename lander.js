@@ -145,6 +145,7 @@ class Game {
 			// Game-logic
 		this.buttonPressed = false;	// The player can press only one button at a time.
 		this.finished = false;		// Is the game finished?
+		this.landing = false;		// Is the game finished?
 		this.dead = false;		// Is the player dead?
 
 		// Drawing-logic
@@ -202,7 +203,11 @@ function nextFrame() {
 		}
 	} else {
 		game.alarm.style.fill = "rgb(0,255,0)";
-		game.legs.setAttribute('opacity',1);
+		if(!game.landing) {
+			game.landing = true;
+			sfx.gear();
+			game.legs.setAttribute('opacity',1);
+		}
 		if (game.y > -130 && !game.finished) {
 			game.finished = true;
 			sfx.success();
