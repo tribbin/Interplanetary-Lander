@@ -20,7 +20,7 @@ back.setAttribute(
 	"x","-400"
 );
 back.setAttribute(
-	"y","-5"
+	"y","-10"
 );
 back.setAttribute(
 	"width","800"
@@ -58,7 +58,7 @@ concreteTop.setAttribute(
 	"width","400"
 );
 concreteTop.setAttribute(
-	"height","52"
+	"height","50"
 );
 concreteTop.setAttribute(
 	"fill","rgb(120,120,120)"
@@ -68,7 +68,7 @@ concreteTopFront.setAttribute(
 	"x","-200"
 );
 concreteTopFront.setAttribute(
-	"y","-1"
+	"y","0"
 );
 concreteTopFront.setAttribute(
 	"width","400"
@@ -106,7 +106,7 @@ alarm.setAttribute(
 	"width","380"
 );
 alarm.setAttribute(
-	"height","6"
+	"height","10"
 );
 
 document.getElementById('lander').appendChild(background);
