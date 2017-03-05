@@ -30,23 +30,6 @@ class Vehicle {
 class Game {
 
 	constructor() {
-		// Game-logic
-		this.buttonPressed = false;	// The player can press only one button at a time.
-		this.finished = false;		// Is the game finished?
-		this.dead = false;		// Is the player dead?
-
-		// Drawing-logic
-		this.zoom = 160;						// Relative pixel-size. This should become obsolete soon.
-
-		// Motion-logic
-		this.x = 800;
-		this.y = -1400;
-		this.rotation = Math.random();
-		this.rotationD = Math.sin(Math.random()-0.5)*Math.PI/30;
-		this.vector = Object();
-		this.vector.x = Math.sin(Math.random()-0.5)*12;
-		this.vector.y = -Math.sin(Math.random())*6;
-		this.velocity = 0;
 
 		// Level-logic
 		this.svg = document.getElementById('lander');
@@ -69,6 +52,8 @@ class Game {
 		this.legs = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.meter = document.createElementNS('http://www.w3.org/2000/svg','rect');
 		this.fuel = document.createElementNS('http://www.w3.org/2000/svg','rect');
+
+		this.restart(); // Contains initial values.
 
 		this.spacecraft.setAttribute('href',vehicle.img.vehicle);
 		this.spacecraft.id = 'spacecraft';
@@ -133,18 +118,19 @@ class Game {
 
 		// Motion-logic
 		this.x = 800;
-		this.y = -1400;
+		this.y = -2400;
 		this.rotation = Math.random();
 		this.rotationD = Math.sin(Math.random()-0.5)*Math.PI/30;
 		this.vector = Object();
-		this.vector.x = Math.sin(Math.random()-0.5)*12;
-		this.vector.y = -Math.sin(Math.random())*6;
+		this.vector.x = Math.sin(Math.random()-0.5)*25;
+		this.vector.y = Math.sin(Math.random()-0.7)*25;
 		this.velocity = 0;
 		this.whole.style.visibility = "initial";
 		this.meter.style.visibility = "initial";
 		this.fuel.style.visibility = "initial";
+		this.legs.setAttribute('opacity',0);
 		level.burst = 160;
-		game.spacebar.style.visibility = 'hidden';
+		this.spacebar.style.visibility = 'hidden';
 		sfx.begin();
 	}
 }
