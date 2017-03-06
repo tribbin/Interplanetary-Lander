@@ -3,7 +3,9 @@ Land your spacecraft safely.
 
 ## Compatibility
 
-Works on Google Chrome. Feel free to make it work on all browsers; I'd rather spend my time playing and improving the game. :sunglasses:
+Works on Google Chrome.
+
+Please make it work on other browsers; I rather spend my time playing and improving the game. :sunglasses:
 
 ## Demo
 [Development-gameplay footage on YouTube.](https://www.youtube.com/watch?v=_x5eXm0DmrY&list=PLVHLdWJonkld_TQG2ypymMWV-SArvMaBz&index=1)
