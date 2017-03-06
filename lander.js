@@ -33,7 +33,7 @@ class Game {
 
 	constructor() {
 
-		this.difficulty = 2;
+		this.difficulty = 0;
 		this.losses = 0;
 		this.wins = 0;
 
