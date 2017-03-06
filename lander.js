@@ -12,7 +12,7 @@ class Vehicle {
 		this.width = 16;
 		this.height = 16;
 		this.weight = 1;
-		this.power = 1;
+		this.power = 0.7;
 		this.name = id;
 		this.img = Object();
 		this.img.path = "./objects/vehicles/"+id+"/img/";
@@ -21,11 +21,31 @@ class Vehicle {
 		this.img.left = this.img.path+"left.svg";
 		this.img.right = this.img.path+"right.svg";
 		this.img.landing = this.img.path+"landing.svg";
+		this.img.flare = this.img.path+"flare.png";
 		this.img.radarPanel = this.img.path+"radar_panel.png";
 		this.img.radarHorizon = this.img.path+"radar_horizon.png";
 		this.translate = Object();
 		this.translate.x = -this.width/2;
 		this.translate.y = -this.height/2;
+	}
+	replace(id) {
+		this.name = id;
+		this.img.path = "./objects/vehicles/"+id+"/img/";
+		this.img.vehicle = this.img.path+"spacecraft.svg";
+		this.img.forward = this.img.path+"forward.svg";
+		this.img.left = this.img.path+"left.svg";
+		this.img.right = this.img.path+"right.svg";
+		this.img.landing = this.img.path+"landing.svg";
+		this.img.flare = this.img.path+"flare.png";
+		this.img.radarPanel = this.img.path+"radar_panel.png";
+		this.img.radarHorizon = this.img.path+"radar_horizon.png";
+		game.radarHorizon.setAttribute('href',this.img.radarHorizon);
+		game.radarPanel.setAttribute('href',this.img.radarPanel);
+		game.spacecraft.setAttribute('href',this.img.vehicle);
+		game.forward.setAttribute('href',this.img.forward);
+		game.left.setAttribute('href',this.img.left);
+		game.right.setAttribute('href',this.img.right);
+		game.legs.setAttribute('href',this.img.landing);
 	}
 }
 
@@ -45,21 +65,42 @@ class Game {
 		this.front = document.getElementById('front');
 		this.alarm = document.getElementById('alarm');
 		this.whole = document.createElementNS('http://www.w3.org/2000/svg','g');
+		this.intro = document.createElementNS('http://www.w3.org/2000/svg','text');
+		this.introImage = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.spacebar = document.createElementNS('http://www.w3.org/2000/svg','text');
 		this.difficultyText = document.createElementNS('http://www.w3.org/2000/svg','text');
 
+//		this.flare = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.radarHorizon = document.createElementNS('http://www.w3.org/2000/svg','image');
+		this.radarAltitudeLabel = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+		this.radarDistanceLabel = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+		this.radarRotationLabel = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+		this.radarFuelLabel = document.createElementNS('http://www.w3.org/2000/svg','tspan');
 		this.radarAltitude = document.createElementNS('http://www.w3.org/2000/svg','tspan');
 		this.radarDistance = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+		this.radarRotation = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+		this.radarFuel = document.createElementNS('http://www.w3.org/2000/svg','tspan');
 		this.radarText = document.createElementNS('http://www.w3.org/2000/svg','text');
 		this.radarPanel = document.createElementNS('http://www.w3.org/2000/svg','image');
 		this.radar = document.createElementNS('http://www.w3.org/2000/svg','g');
+		this.radarText.appendChild(this.radarAltitudeLabel);
 		this.radarText.appendChild(this.radarAltitude);
-		this.radarText.appendChild(this.radarDistance);
+		this.radarText.appendChild(this.radarDistanceLabel);
+		this.radarText.appendChild(this.radarDistance);		
+		this.radarText.appendChild(this.radarRotationLabel);
+		this.radarText.appendChild(this.radarRotation);
+		this.radarText.appendChild(this.radarFuelLabel);
+		this.radarText.appendChild(this.radarFuel);
 		this.radar.appendChild(this.radarHorizon);
 		this.radar.appendChild(this.radarPanel);
 		this.radar.appendChild(this.radarText);
 
+/*
+		this.flare.setAttribute('href',vehicle.img.flare);
+		this.flare.setAttribute('mix-blend-mode','darken');
+		this.flare.setAttribute('opacity',0);
+		this.flare.setAttribute('width',320);
+*/
 		this.radarHorizon.setAttribute('href',vehicle.img.radarHorizon);
 		this.radarHorizon.setAttribute('width',640);
 		this.radarPanel.setAttribute('href',vehicle.img.radarPanel);
@@ -70,15 +111,44 @@ class Game {
 		this.radarPanel.setAttribute('y',-320);
 		this.radarPanel.setAttribute('x',-320);
 
+		this.radarDistance.style.textAnchor = 'end';
+		this.radarRotation.style.textAnchor = 'end';
+		this.radarAltitude.style.textAnchor = 'end';
+		this.radarFuel.style.textAnchor = 'end';
+
+		this.radarDistance.setAttribute('x',320);
+		this.radarRotation.setAttribute('x',320);
+		this.radarAltitude.setAttribute('x',320);
+		this.radarFuel.setAttribute('x',320);
+
 		this.radarText.setAttribute('x',-320);
 		this.radarText.setAttribute('y',450);
 		this.radarText.style.fill = 'white';
 		this.radarText.style.fontSize = 120;
 
-		this.radarDistance.setAttribute('x',-320);
-		this.radarDistance.setAttribute('dy','1.2em');
-
+		this.radarDistanceLabel.setAttribute('x',-320);
+		this.radarDistanceLabel.setAttribute('dy','1.2em');
+		this.radarRotationLabel.setAttribute('x',-320);
+		this.radarRotationLabel.setAttribute('dy','1.2em');
+		this.radarFuelLabel.setAttribute('x',-320);
+		this.radarFuelLabel.setAttribute('dy','1.2em');
+		this.radarAltitudeLabel.innerHTML = "Alt :";
+		this.radarDistanceLabel.innerHTML = "Dist:";
+		this.radarRotationLabel.innerHTML = "Rot :";
+		this.radarFuelLabel.innerHTML = "Fuel:";
 		this.radar.setAttribute('transform','translate(0,-1800)');
+
+		this.introImage.setAttribute('href','image/intro.png');
+		this.introImage.setAttribute('x','-800');
+		this.introImage.setAttribute('y','-850');
+		this.introImage.setAttribute('width','1600');
+		this.introImage.setAttribute('height','900');
+
+		this.intro.setAttribute('y','-700');
+		this.intro.innerHTML = "Select your spacecraft.";
+		this.intro.style.fill = 'white';
+		this.intro.style.fontSize = '120';
+		this.intro.style.textAnchor = 'middle';
 
 		this.spacebar.setAttribute('y','-400');
 		this.spacebar.innerHTML = "Press spacebar... SPACE-bar.";
@@ -88,7 +158,7 @@ class Game {
 		this.spacebar.style.textAnchor = 'middle';
 
 		this.difficultyText.setAttribute('y','-700');
-//		this.difficultyText.style.visibility = 'hidden';
+		this.difficultyText.style.visibility = 'hidden';
 		this.difficultyText.style.fill = 'white';
 		this.difficultyText.style.fontSize = '120';
 		this.difficultyText.style.textAnchor = 'middle';
@@ -135,7 +205,6 @@ class Game {
 		this.legs.setAttribute('x',-vehicle.width*5);
 		this.legs.setAttribute('width',this.zoom);
 		this.legs.setAttribute('height',this.zoom);
-		this.legs.setAttribute('opacity',0);
 
 		this.meter.setAttribute('y',-60);
 		this.meter.setAttribute('x',-vehicle.width*5);
@@ -156,24 +225,43 @@ class Game {
 
 		this.svg.appendChild(this.meter);
 		this.svg.appendChild(this.fuel);
+		this.svg.insertBefore(this.introImage,this.front);
 		this.svg.insertBefore(this.whole,this.front);
 
+		this.svg.appendChild(this.intro);
 		this.svg.appendChild(this.spacebar);
 		this.svg.appendChild(this.difficultyText);
 		this.svg.appendChild(this.radar);
-		sfx.begin();
+//		this.svg.appendChild(this.flare);
 	}
 	restart() {
 
-		// Motion-logic
-		this.x = this.difficulty*Math.random()*200;
-		this.y = -(800+this.difficulty*400);
+		// Testing mode.
+		if (this.difficulty == 0) {
+			this.x = 0;
+			this.y = -130;
+			this.landing = true;
+			this.legs.setAttribute('opacity',1);
+			level.burst = 240;
+			this.introImage.style.visibility = 'initial';
+			this.intro.style.visibility = 'initial';
+		} else {
+			this.x = this.difficulty*Math.random()*200;
+			this.y = -(800+this.difficulty*400);
+			this.landing = false;		// Is the player landing?
+			this.legs.setAttribute('opacity',0);
+			level.burst = 20+(this.difficulty+1)*40;
+			this.introImage.style.visibility = 'hidden';
+			this.intro.style.visibility = 'hidden';
+			sfx.begin();
+		}
+
 
 		// Game-logic
 		this.buttonPressed = false;	// The player can press only one button at a time.
-		this.landing = false;		// Is the game finished?
 		this.dead = false;		// Is the player dead?
 		this.finished = false;		// Is the game finished?
+		this.success = false;		// Is the game succesfully finished?
 
 		// Drawing-logic
 		this.zoom = 160;						// Relative pixel-size. This should become obsolete soon.
@@ -186,11 +274,8 @@ class Game {
 		this.whole.style.visibility = "initial";
 		this.meter.style.visibility = "initial";
 		this.fuel.style.visibility = "initial";
-		this.legs.setAttribute('opacity',0);
-		level.burst = (this.difficulty+1)*50;
 		this.spacebar.style.visibility = 'hidden';
 		this.difficultyText.style.visibility = 'hidden';
-		sfx.begin();
 	}
 }
 // Drawing
@@ -213,6 +298,8 @@ function nextFrame() {
 				game.whole.style.visibility = "hidden";
 				game.meter.style.visibility = "hidden";
 				game.fuel.style.visibility = "hidden";
+				game.introImage.style.visibility = 'hidden';
+				game.intro.style.visibility = 'hidden';
 				game.spacebar.style.visibility = 'initial';
 			} else if (game.y > -130 && (game.x > -level.landingspace && game.x < level.landingspace ) && !game.finished) {
 				game.dead = true;
@@ -222,6 +309,8 @@ function nextFrame() {
 				game.whole.style.visibility = "hidden";
 				game.meter.style.visibility = "hidden";
 				game.fuel.style.visibility = "hidden";
+				game.introImage.style.visibility = 'hidden';
+				game.intro.style.visibility = 'hidden';
 				game.spacebar.style.visibility = 'initial';
 			}
 		} else {
@@ -234,18 +323,21 @@ function nextFrame() {
 			}
 			if (game.y > -130) {
 				game.finished = true;
-				game.wins++;
-				game.difficultyText.style.visibility = 'initial';
-				game.difficultyText.innerHTML = "Completed Difficulty: "+(10*game.difficulty).toFixed(0);;
-				game.difficulty += 0.1;
+				if (!game.success && game.difficulty > 0) {
+					game.success = true;
+					game.wins++;
+					game.difficultyText.style.visibility = 'initial';
+					game.difficultyText.innerHTML = "Completed Difficulty: "+(10*game.difficulty).toFixed(0);;
+					game.difficulty += 0.1;
+					sfx.success();
+					game.spacebar.style.visibility = 'initial';
+				}
 				game.alarm.style.fill = "rgb(255,255,0)";
-				sfx.success();
 				game.rotation=0;
 				//game.y=-130;
 				game.whole.setAttribute('transform',
 					'translate('+game.x+','+-130.1+') ' 
 					+ 'rotate(0,'+game.zoom/2+','+game.zoom/4+')');
-				game.spacebar.style.visibility = 'initial';
 			}
 		}
 
@@ -267,13 +359,17 @@ function nextFrame() {
 		game.whole.setAttribute('transform',
 			'translate('+game.x+','+game.y+') ' 
 			+ 'rotate('+game.rotation*(180/Math.PI)+','+0+','+vehicle.height*2.5+')');
+//		game.flare.setAttribute('transform',
+//			'translate('+(-game.x)+','+((-900*scale)-game.y)+')');
 		game.meter.setAttribute('transform',
 			'translate('+game.x+','+game.y+')');
 		game.fuel.setAttribute('transform',
 			'translate('+game.x+','+game.y+')');
 		if (game.x<-3200||game.x>3200||game.y>200||game.y<-3400) {
-			game.radarAltitude.innerHTML = "Alt:  "+Math.round(-(game.y+60));
-			game.radarDistance.innerHTML = "Dist: "+Math.round(game.x);
+			game.radarAltitude.innerHTML = (-(game.y+60)).toFixed(0);
+			game.radarDistance.innerHTML = game.x.toFixed(0);
+			game.radarRotation.innerHTML = (game.rotationD*60).toFixed(1);
+			game.radarFuel.innerHTML = (level.burst).toFixed(0);
 			game.radar.style.display = 'initial';
 			game.radarHorizon.setAttribute('transform',
 			'rotate('+game.rotation*(180/Math.PI)+')');
@@ -286,9 +382,6 @@ function nextFrame() {
 	requestAnimationFrame(nextFrame);
 }
 function keyboard(event) {
-	if (event.keyCode == 32) {
-		game.restart();
-	}
 	if (level.burst > 0 && !game.dead) {
 		if (event.keyCode == 37) {
 			if(!game.buttonPressed && event.type == 'keydown') {
@@ -315,36 +408,50 @@ function keyboard(event) {
 				game.buttonPressed = true;
 				steer('forward');
 				game.forward.style.animation = "start 200ms";
+//				game.flare.style.animation = "start 200ms";
 			} else {
 				game.forward.style.animation = "stop 200ms";
 				game.buttonPressed = false;
+//				game.flare.style.animation = "stop 200ms";
 			}
 		}
+	}
+	if (event.keyCode == 32) {
+		game.restart();
+	} else if (event.keyCode == 49) {
+		vehicle.replace('classic');
+		vehicle.power = 1;
+	} else if (event.keyCode == 50) {
+		vehicle.replace('emerald');
+		vehicle.power = 2;
+	} else if (event.keyCode == 51) {
+		vehicle.replace('rose');
+		vehicle.power = 0.5;
 	}
 }
 
 // Different control-options can call these functions.
 function steer(direction) {
-	level.burst -= 1;
+	level.burst -= vehicle.power;
 	if (game.finished) {
 		game.finished = false;
 		game.landed = false;
 	}
 	sfx.burst();
 	if (direction == 'left') {
-		game.rotationD-=0.5*(Math.PI/180);
-		game.vector.x += Math.sin(game.rotation)/2;
-		game.vector.y -= Math.cos(game.rotation)/2;
+		game.rotationD-=0.5*(Math.PI/180)*(vehicle.power/vehicle.weight);
+		game.vector.x += Math.sin(game.rotation)*(vehicle.power/vehicle.weight)/2;
+		game.vector.y -= Math.cos(game.rotation)*(vehicle.power/vehicle.weight)/2;
 	}
 	if (direction == 'right') {
-		game.rotationD+=0.5*(Math.PI/180);
-		game.vector.x += Math.sin(game.rotation)/2;
-		game.vector.y -= Math.cos(game.rotation)/2;
+		game.rotationD+=0.5*(Math.PI/180)*(vehicle.power/vehicle.weight);
+		game.vector.x += Math.sin(game.rotation)*(vehicle.power/vehicle.weight)/2;
+		game.vector.y -= Math.cos(game.rotation)*(vehicle.power/vehicle.weight)/2;
 	}
 	if (direction == 'forward') {
-		level.burst -= 1;
-		game.vector.x += Math.sin(game.rotation);
-		game.vector.y -= Math.cos(game.rotation);
+		level.burst -= vehicle.power;
+		game.vector.x += Math.sin(game.rotation)*(vehicle.power/vehicle.weight);
+		game.vector.y -= Math.cos(game.rotation)*(vehicle.power/vehicle.weight);
 	}
 }
 
