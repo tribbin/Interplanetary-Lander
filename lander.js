@@ -53,7 +53,7 @@ class Game {
 
 	constructor() {
 
-		this.difficulty = 0;
+		this.difficulty = -1;
 		this.losses = 0;
 		this.wins = 0;
 
@@ -139,13 +139,13 @@ class Game {
 		this.radar.setAttribute('transform','translate(0,-1800)');
 
 		this.introImage.setAttribute('href','image/intro.png');
-		this.introImage.setAttribute('x','-800');
-		this.introImage.setAttribute('y','-850');
-		this.introImage.setAttribute('width','1600');
-		this.introImage.setAttribute('height','900');
+		this.introImage.setAttribute('x','-1600');
+		this.introImage.setAttribute('y','-3400');
+		this.introImage.setAttribute('width','3200');
+		this.introImage.setAttribute('height','1800');
 
-		this.intro.setAttribute('y','-700');
-		this.intro.innerHTML = "Select your spacecraft.";
+		this.intro.setAttribute('y','-400');
+		this.intro.innerHTML = "Fly using arrow-keys.";
 		this.intro.style.fill = 'white';
 		this.intro.style.fontSize = '120';
 		this.intro.style.textAnchor = 'middle';
@@ -225,10 +225,10 @@ class Game {
 
 		this.svg.appendChild(this.meter);
 		this.svg.appendChild(this.fuel);
+		this.svg.insertBefore(this.intro,this.front);
 		this.svg.insertBefore(this.introImage,this.front);
 		this.svg.insertBefore(this.whole,this.front);
 
-		this.svg.appendChild(this.intro);
 		this.svg.appendChild(this.spacebar);
 		this.svg.appendChild(this.difficultyText);
 		this.svg.appendChild(this.radar);
@@ -237,7 +237,7 @@ class Game {
 	restart() {
 
 		// Testing mode.
-		if (this.difficulty == 0) {
+		if (this.difficulty == -1) {
 			this.x = 0;
 			this.y = -130;
 			this.landing = true;
@@ -245,6 +245,11 @@ class Game {
 			level.burst = 240;
 			this.introImage.style.visibility = 'initial';
 			this.intro.style.visibility = 'initial';
+			this.rotation = 0;
+			this.rotationD = 0;
+			this.vector = Object();
+			this.vector.x = 0;
+			this.vector.y = 0;
 		} else {
 			this.x = this.difficulty*Math.random()*200;
 			this.y = -(800+this.difficulty*400);
@@ -253,6 +258,11 @@ class Game {
 			level.burst = 20+(this.difficulty+1)*40;
 			this.introImage.style.visibility = 'hidden';
 			this.intro.style.visibility = 'hidden';
+			this.rotation = this.difficulty*Math.random()*Math.PI/10;
+			this.rotationD =this.difficulty*(Math.sin(Math.random()-0.5)/20);
+			this.vector = Object();
+			this.vector.x = this.difficulty*Math.sin(Math.random()-0.5)*5;
+			this.vector.y = this.difficulty*Math.sin(Math.random()-0.8)*5;
 			sfx.begin();
 		}
 
@@ -265,11 +275,6 @@ class Game {
 
 		// Drawing-logic
 		this.zoom = 160;						// Relative pixel-size. This should become obsolete soon.
-		this.rotation = this.difficulty*Math.random()*Math.PI/10;
-		this.rotationD =this.difficulty*(Math.sin(Math.random()-0.5)/20);
-		this.vector = Object();
-		this.vector.x = this.difficulty*Math.sin(Math.random()-0.5)*5;
-		this.vector.y = this.difficulty*Math.sin(Math.random()-0.8)*5;
 		this.velocity = 0;
 		this.whole.style.visibility = "initial";
 		this.meter.style.visibility = "initial";
@@ -286,6 +291,17 @@ function nextFrame() {
 		game.vector.y+=level.gravity;
 		game.x+=game.vector.x;
 		game.y+=game.vector.y;
+		if ( game.difficulty == -1) {
+			if ( game.y < -7000 ) {
+				game.intro.innerHTML = 'To start the game; press ENTER.';
+			} else if ( game.y < -3200 ) {
+				game.intro.innerHTML = 'You can navigate using your radar.';
+			} else if ( game.y < -1700 ) {
+				game.intro.innerHTML = 'You can switch spacecraft during flight.';
+			} else if ( game.y < -850 ) {
+				game.intro.innerHTML = 'Try to touch the sky!';
+			}
+		}
 		if ( game.y < -400 || game.velocity > 3 || !(game.x > -level.landingspace && game.x < level.landingspace ) || Math.cos(game.rotation) < 0.9 ) {
 			if (!game.finished && !game.dead) {
 				alarm.style.fill = "rgb(255,0,0)";
@@ -323,7 +339,7 @@ function nextFrame() {
 			}
 			if (game.y > -130) {
 				game.finished = true;
-				if (!game.success && game.difficulty > 0) {
+				if (!game.success && game.difficulty > -1) {
 					game.success = true;
 					game.wins++;
 					game.difficultyText.style.visibility = 'initial';
@@ -427,6 +443,9 @@ function keyboard(event) {
 	} else if (event.keyCode == 51) {
 		vehicle.replace('rose');
 		vehicle.power = 0.5;
+	} else if (event.keyCode == 13 && game.difficulty == -1) {
+		game.difficulty = 0;
+		game.restart();
 	}
 }
 
