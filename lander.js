@@ -16,7 +16,7 @@ class Vehicle {
 		this.name = id;
 		this.img = Object();
 		this.img.path = "./objects/vehicles/"+id+"/img/";
-		this.img.vehicle = this.img.path+id+".svg";
+		this.img.vehicle = this.img.path+"spacecraft.svg";
 		this.img.forward = this.img.path+"forward.svg";
 		this.img.left = this.img.path+"left.svg";
 		this.img.right = this.img.path+"right.svg";
@@ -289,7 +289,7 @@ function keyboard(event) {
 	if (event.keyCode == 32) {
 		game.restart();
 	}
-	if (level.burst > 0 && !game.finished) {
+	if (level.burst > 0 && !game.dead) {
 		if (event.keyCode == 37) {
 			if(!game.buttonPressed && event.type == 'keydown') {
 				game.buttonPressed = true;
@@ -326,6 +326,10 @@ function keyboard(event) {
 // Different control-options can call these functions.
 function steer(direction) {
 	level.burst -= 1;
+	if (game.finished) {
+		game.finished = false;
+		game.landed = false;
+	}
 	sfx.burst();
 	if (direction == 'left') {
 		game.rotationD-=0.5*(Math.PI/180);
