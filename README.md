@@ -10,6 +10,8 @@ https://www.youtube.com/watch?v=CDmQe45w73s
 
 ## Screenshots
 
+![Intro](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/select.png)
+
 ![Wide shot](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/wide.jpg)
 
 ![Close-up](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/closeup.jpg)
