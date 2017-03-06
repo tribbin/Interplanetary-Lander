@@ -5,8 +5,10 @@ Land your spacecraft safely.
 
 Works on Google Chrome.
 
+Please make it work on other browsers; I rather spend my time playing and improving the game. :sunglasses:
+
 ## Demo
-https://www.youtube.com/watch?v=CDmQe45w73s
+[Development-gameplay footage on YouTube.](https://www.youtube.com/watch?v=_x5eXm0DmrY&list=PLVHLdWJonkld_TQG2ypymMWV-SArvMaBz&index=1)
 
 ## Screenshots
 
