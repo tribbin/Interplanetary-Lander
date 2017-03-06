@@ -17,10 +17,12 @@ class Vehicle {
 		this.img = Object();
 		this.img.path = "./objects/vehicles/"+id+"/img/";
 		this.img.vehicle = this.img.path+id+".svg";
-		this.img.forward = this.img.path+id+"_forward.svg";
-		this.img.left = this.img.path+id+"_left.svg";
-		this.img.right = this.img.path+id+"_right.svg";
-		this.img.landing = this.img.path+id+"_landing.svg";
+		this.img.forward = this.img.path+"forward.svg";
+		this.img.left = this.img.path+"left.svg";
+		this.img.right = this.img.path+"right.svg";
+		this.img.landing = this.img.path+"landing.svg";
+		this.img.radarPanel = this.img.path+"radar_panel.png";
+		this.img.radarHorizon = this.img.path+"radar_horizon.png";
 		this.translate = Object();
 		this.translate.x = -this.width/2;
 		this.translate.y = -this.height/2;
@@ -31,7 +33,7 @@ class Game {
 
 	constructor() {
 
-		this.difficulty = 0;
+		this.difficulty = 2;
 		this.losses = 0;
 		this.wins = 0;
 
@@ -58,9 +60,9 @@ class Game {
 		this.radar.appendChild(this.radarPanel);
 		this.radar.appendChild(this.radarText);
 
-		this.radarHorizon.setAttribute('href','img/radar_horizon.svg');
+		this.radarHorizon.setAttribute('href',vehicle.img.radarHorizon);
 		this.radarHorizon.setAttribute('width',640);
-		this.radarPanel.setAttribute('href','img/radar_panel.svg');
+		this.radarPanel.setAttribute('href',vehicle.img.radarPanel);
 		this.radarPanel.setAttribute('width',640);
 				
 		this.radarHorizon.setAttribute('y',-320);
