@@ -12,12 +12,12 @@ https://www.youtube.com/watch?v=CDmQe45w73s
 
 ![Intro](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/select.png)
 
-![Wide shot](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/wide.jpg)
-
 ![Close-up](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/closeup.jpg)
 
-![Pink spacecraft](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/pink.jpg)
+![Wide shot](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/wide.jpg)
 
-![Radar](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/radar.jpg)
+![Radar](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/radar.png)
+
+![Pink spacecraft](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/pink.jpg)
 
 ![Landed](https://raw.githubusercontent.com/tribbin/Interplanetary-Lander/master/docs/landed.jpg)
