@@ -6,7 +6,7 @@ Land your spacecraft safely.
 Works on Google Chrome.
 
 ## Demo
-https://www.youtube.com/watch?v=CDmQe45w73s
+[Development-gameplay footage on YouTube.](https://www.youtube.com/playlist?list=PLVHLdWJonkld_TQG2ypymMWV-SArvMaBz)
 
 ## Screenshots
 
