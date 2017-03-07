@@ -3,6 +3,8 @@ Land your spacecraft safely.
 
 ## Demonstration
 
+Click on the image to start the video.
+
 [![Demonstration Video](docs/youtube.jpg)](https://www.youtube.com/watch?v=1Zk9eiH6EL8)
 
 ## The Legends
