@@ -53,7 +53,7 @@ class Game {
 
 	constructor() {
 
-		this.difficulty = -1;
+		this.difficulty = 4.9;
 		this.losses = 0;
 		this.wins = 0;
 
